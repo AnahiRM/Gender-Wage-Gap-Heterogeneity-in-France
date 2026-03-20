@@ -1,8 +1,7 @@
 # Ignore large data files
-data/
-*.csv
 *.zip
 *.7z
+*.rds
 
 # Ignore Python/Anaconda environment files
 .anaconda3/
