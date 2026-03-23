@@ -198,13 +198,13 @@ dim(X_grf)
 Our final sample contains 463882 subjects and 55 covariates.
 
 ```{r Run CF}
-#cf <- causal_forest(
-#  X = X_grf,
-#  Y = Y_grf,
-#  W = D,
-#  num.trees = 1000,
-#  num.threads = 16            
-#)
+cf <- causal_forest(
+  X = X_grf,
+  Y = Y_grf,
+  W = D,
+  num.trees = 1000,
+  num.threads = 16            
+)
 #saveRDS(cf, "my_causal_forest.rds") # Save causal forest as n R object for later use
 ```
 
@@ -215,7 +215,7 @@ The grf package allows a direct estimation of both ATE effects as well as to ind
 We estimate first the average gender effects on wages tryingseveral estimation methods and samples to check the robustness of the estimate. Methods include augmented inverse probability weighting and targeted maximum likelihood estimation. We run both methods on the whole sample as well as on the overlapping sample.
 
 ```{r ATE Estimation, echo=FALSE, message=FALSE, warning=FALSE}
-cf <- readRDS("my_causal_forest.rds")
+#cf <- readRDS("my_causal_forest.rds")
 # Predict multiple ATEs 
 average_treatment_effect(cf)
 ate_aipw <- average_treatment_effect(cf, method = "AIPW", target.sample = "all")
